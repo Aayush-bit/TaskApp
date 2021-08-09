@@ -1,1 +1,12 @@
-<p>user id: {{userId}} </p>
+<div class="container">
+    <h1>{{userData.name}}</h1>
+    <p>Phone No.: {{userData.phone}}</p>
+    <p>Email: {{userData.email}}</p>
+    <p>Designation: {{userData.designation}}</p>
+    <!-- {{userData.isAdmin}} -->
+    <hr>
+    <!-- user tasks here -->
+    <h1>Tasks Assigned</h1>
+    <app-tasks></app-tasks>
+    <!-- table for tasks -->
+</div>

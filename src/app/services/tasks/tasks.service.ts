@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-// import TasksData from "../../../assets/tasks.json"
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,25 @@ export class TasksService {
   private _url = `../../../assets/tasks.json`;
 
   getTasks():Observable<any> {
+    // ? re-consider the logic here
     return this.http.get<any>(this._url);
   }
 
-  // getTasks() {
-  //   return TasksData;
-  // }
+  getTask(id:any):Observable<any> {
+    // find for the task with the given "id" and return the required data
 
-  // getTask(id:any):Observable<any> {
-  //   // let data = this.http.get(this._url);
-  //   // let arr = []
-  //   // // for (let i = 0; i<sizeof(data))
-  //   // arr.map(() => {});
-  //   return this.http.get<any>(this._url);
-  // }
+    let reqdTask:any;
+
+    return this.http.get<any>(this._url)
+    .pipe(
+      map(tasks => {
+        tasks.filter((task:any) => {
+          if(task.tid == id) {
+            reqdTask = task;
+          }
+        });
+        return reqdTask;
+      })
+    )
+  }
 }

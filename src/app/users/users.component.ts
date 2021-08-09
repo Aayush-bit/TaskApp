@@ -11,32 +11,14 @@ export class UsersComponent implements OnInit {
 
   constructor(private router:Router, private _usersService: UsersService) { }
 
-  // users = [
-  //   {
-  //     name: "John"
-  //   },
-  //   {
-  //     name: "Joseph"
-  //   },
-  //   {
-  //     name: "Stark"
-  //   },
-  //   {
-  //     name: "Josephene"
-  //   },
-  //   {
-  //     name: "Goofy"
-  //   },
-  //   {
-  //     name: "Donald"
-  //   }
-  // ]
-
   users = []
 
   ngOnInit(): void {
     this._usersService.getUsers()
     .subscribe(data => this.users = data);
+
+    // this._usersService.getUser(1)
+    // .subscribe(data => console.log(data));
   }
 
 

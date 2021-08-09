@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-// import usersData from "../../../assets/users.json";
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,21 @@ export class UsersService {
     return this.http.get<any>(this._url);
   }
 
-  // getUser(id:any):Observable<any> {
-  //   // find for the user with the given "id" and return the required data
-  //   return this.http.get<any>(this._url);
-  // }
+  getUser(id:any):Observable<any> {
+    // find for the user with the given "id" and return the required data
+
+    let reqdUser:any;
+
+    return this.http.get<any>(this._url)
+    .pipe(
+      map(users => {
+        users.filter((user:any) => {
+          if(user.id == id) {
+            reqdUser = user
+          }
+        });
+        return reqdUser;
+      })
+    )
+  }
 }

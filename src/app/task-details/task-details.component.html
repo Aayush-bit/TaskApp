@@ -1,1 +1,12 @@
-<p>task-details works!</p>
+<div class="container">
+    <h1>{{taskData.name}}</h1>
+    <p>Priority: {{taskData.priority}}</p>
+    <p>Type: {{taskData.type}}</p>
+    <p>
+        Status: 
+        <span *ngIf="taskData.isActive; else completed">Active</span>
+        <ng-template #completed>
+            <span>Completed</span>
+        </ng-template>
+    </p>
+</div>
