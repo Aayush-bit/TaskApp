@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "name": "John Doe",
+        "phone": "9876543210",
+        "email": "john@example.com",
+        "password": "john",
+        "designation": "Manager",
+        "isAdmin": false
+    },
+    {
+        "id": "2",
+        "name": "Admin",
+        "phone": "9876543201",
+        "email": "admin@example.com",
+        "password": "admin",
+        "designation": "Admin",
+        "isAdmin": true
+    }
+]

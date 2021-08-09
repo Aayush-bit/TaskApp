@@ -1,0 +1,12 @@
+<div class="btn-group mb-4" role="group" aria-label="Basic example">
+    <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect (click)="showTasks()">Tasks</button>
+    <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect (click)="showUsers()">Users</button>
+</div>
+
+<div *ngIf="isTasksShown">
+    <app-tasks></app-tasks>
+</div>
+
+<div *ngIf="isUsersShown">
+    <app-users></app-users>
+</div>

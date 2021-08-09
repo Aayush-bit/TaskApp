@@ -1,1 +1,22 @@
-<p>users works!</p>
+<h3>Users</h3>
+
+<table mdbTable class="text-capitalize" [hover]="true">
+    <thead>
+      <tr>
+        <th scope="col">S.No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">phone no.</th>
+        <th scope="col">email</th>
+        <th scope="col">Designation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol (click)="onSelectUser(i+1)" *ngFor="let user of users;index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{user['name']}}</td>
+        <td>{{user['phone']}}</td>
+        <td class="text-lowercase">{{user['email']}}</td>
+        <td>{{user['designation']}}</td>
+      </tr>
+    </tbody>
+</table>

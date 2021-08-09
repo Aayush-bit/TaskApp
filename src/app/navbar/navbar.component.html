@@ -1,1 +1,29 @@
-<p>navbar works!</p>
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark cyan mb-4" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" routerLink="/">Navbar</a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link waves-light" routerLink="/login" *ngIf="isNotLoggedIn" mdbWavesEffect>Login</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link waves-light" routerLink="/dashboard" *ngIf="isLoggedIn" mdbWavesEffect>Dashboard</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link waves-light" routerLink="/create/user" *ngIf="isAdmin" mdbWavesEffect>Create User</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link waves-light" routerLink="/create/task" *ngIf="isAdmin" mdbWavesEffect>Add Task</a>
+          </li>
+      </ul>
+      <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->

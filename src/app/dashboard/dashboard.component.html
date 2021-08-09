@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+<div class="container">
+    <h1>Dashboard Page</h1>
+    <button (click)="toggleAdmin()">Toggle admin</button>
+    <div *ngIf="isAdmin; else user">
+        <app-admin></app-admin>
+    </div>
+    <ng-template #user>
+        <div>
+            <app-tasks></app-tasks>
+        </div>
+    </ng-template>
+</div>

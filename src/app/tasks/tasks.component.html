@@ -1,1 +1,25 @@
-<p>tasks works!</p>
+<h3>Your Tasks</h3>
+
+<table mdbTable class="text-capitalize" [hover]="true">
+    <thead>
+      <tr>
+        <th scope="col">S.No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Type</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let task of tasks; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{task['name']}}</td>
+        <td>{{task['priority']}}</td>
+        <td>{{task['type']}}</td>
+        <td>
+            <div *ngIf="task['isActive']; else completed">active</div>
+            <ng-template #completed>completed</ng-template>
+        </td>
+      </tr>
+    </tbody>
+</table>
