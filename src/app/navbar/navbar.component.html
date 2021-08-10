@@ -20,6 +20,9 @@
           <li class="nav-item" *ngIf="isLoggedIn">
             <a class="nav-link waves-light" routerLink="/create/task" *ngIf="isAdmin" mdbWavesEffect>Add Task</a>
           </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link waves-light" (click)="logout()" mdbWavesEffect>Log Out</a>
+          </li>
       </ul>
       <!-- Links -->
     </links>

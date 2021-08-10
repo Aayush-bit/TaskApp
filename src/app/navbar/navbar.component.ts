@@ -18,4 +18,9 @@ export class NavbarComponent implements OnInit {
     this.isAdmin = localStorage.getItem("isAdmin") == "true" ? true: false;
     this.isNotLoggedIn = !this.isLoggedIn;
   }
+
+  logout() {
+    localStorage.clear();
+    location.assign("/");
+  }
 }

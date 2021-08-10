@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users/users.service';
-import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -9,18 +8,22 @@ import { Router } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _usersService: UsersService,  private router:Router) { }
+  constructor(private _usersService: UsersService) { }
+
   formSubmit(formData: any) {
     if(formData.email == "" || formData.password == "") return;
+    
     this._usersService.loginUser(formData)
     .subscribe(data => {
       localStorage.setItem("userId", data.id);
       localStorage.setItem("email", data.email);
       localStorage.setItem("isAdmin", data.isAdmin);
       localStorage.setItem("isLoggedIn", "true");
-      this.router.navigate(['/dashboard']);
+      
+      location.assign("/dashboard");
     });
   }
+  
   ngOnInit(): void {
   }
 }
