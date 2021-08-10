@@ -5,8 +5,8 @@
     <p>Designation: {{userData.designation}}</p>
     <!-- {{userData.isAdmin}} -->
     <hr>
+
     <!-- user tasks here -->
     <h1>Tasks Assigned</h1>
-    <app-tasks></app-tasks>
-    <!-- table for tasks -->
+    <app-tasks [userId]="userData.id"></app-tasks>
 </div>

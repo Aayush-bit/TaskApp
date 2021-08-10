@@ -12,21 +12,32 @@ export class TasksService {
 
   private _url = `../../../assets/tasks.json`;
 
-  getTasks():Observable<any> {
-    // ? re-consider the logic here
-    return this.http.get<any>(this._url);
+  // get tasks of a particular user on the basis of "userId"
+  getTasks(userId:any):Observable<any> {
+    let requiredTasks:any = [];
+
+    return this.http.get<any>(this._url)
+    .pipe(
+      map(tasks => {
+        tasks.filter((task:any) => {
+          if(task.uid == userId) {
+            requiredTasks.push(task);
+          }
+        });
+        return requiredTasks;
+      })
+    )
   }
 
-  getTask(id:any):Observable<any> {
-    // find for the task with the given "id" and return the required data
-
+  // get a particular task on the basis of "taskId"
+  getTask(taskId:any):Observable<any> {
     let reqdTask:any;
 
     return this.http.get<any>(this._url)
     .pipe(
       map(tasks => {
         tasks.filter((task:any) => {
-          if(task.tid == id) {
+          if(task.tid == taskId) {
             reqdTask = task;
           }
         });
@@ -34,4 +45,7 @@ export class TasksService {
       })
     )
   }
+
+  // createTask(userId:any) {}
+  // removeTask(taskId:any) {}
 }

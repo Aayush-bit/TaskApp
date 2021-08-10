@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TasksService } from '../services/tasks/tasks.service';
 import { Router } from '@angular/router'
 
@@ -11,21 +11,12 @@ export class TasksComponent implements OnInit {
 
   constructor(private _taskService: TasksService, private router:Router) { }
 
-  userId = 1;
+  @Input('userId') public userId:any;
   tasks = []
-  myTasks = [];
+  
   ngOnInit(): void {
-    this._taskService.getTasks()
+    this._taskService.getTasks(this.userId)
     .subscribe(data => this.tasks = data);
-    // .subscribe(data => this.tasks = JSON.parse(JSON.stringify(data)));
-    // .subscribe(data => {
-    //   // this.tasks = data
-    //   data.map((item:Object) => {
-    //     if(item.uid) {
-    //       this.myTasks.push(item);
-    //     }
-    //   });
-    // });    
   }
   
   onSelectTask(id:any) {
