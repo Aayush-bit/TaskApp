@@ -7,14 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  isAdmin:boolean = true;
+  isAdmin:boolean = false;
+  userId:any;
   
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  toggleAdmin() {
-    this.isAdmin = !this.isAdmin;
+    this.isAdmin = localStorage.getItem("isAdmin") == "true" ? true: false;
+    this.userId = localStorage.getItem("userId");
   }
 }

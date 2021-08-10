@@ -1,37 +1,38 @@
 <div class="container">
     <h1>Add User</h1>
-    <form>
+    <form #addUserForm="ngForm" (ngSubmit)="formSubmit(addUserForm.value)" (keydown.enter)="$event.preventDefault()">
         <!-- name -->
         <div class="mb-3">
           <label class="form-label">Name</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" name="name" ngModel>
         </div>
         <!-- email -->
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="email" class="form-control" name="email" ngModel>
         </div>
         <!-- password -->
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input type="password" class="form-control" name="password" ngModel>
         </div>
         <!-- phone -->
         <div class="mb-3">
           <label class="form-label">Phone</label>
-          <input type="tel" class="form-control">
+          <input type="tel" class="form-control" name="phone" ngModel>
         </div>
         <!-- designation -->
         <div class="mb-3">
           <label class="form-label">Designation</label>
-          <input type="text" class="form-control" id="exampleInputPassword1">
+          <input type="text" class="form-control" name="designation" ngModel>
         </div>
         <!-- admin detail -->
-        <select class="form-select mb-3">
+        <select class="form-select mb-3" name="isAdmin" ngModel>
             <option selected>Admin Detail</option>
             <option value="true">User is an admin</option>
             <option value="false">User is not an admin</option>
         </select>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

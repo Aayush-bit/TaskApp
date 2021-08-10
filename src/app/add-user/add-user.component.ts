@@ -11,5 +11,8 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  formSubmit(data:any) {
+    console.log(data)
+  }
 }

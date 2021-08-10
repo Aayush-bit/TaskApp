@@ -11,8 +11,10 @@ export class AdminComponent implements OnInit {
 
   isTasksShown = true;
   isUsersShown = false;
+  userId:any;
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem("userId");
   }
 
   showUsers() {

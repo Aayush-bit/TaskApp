@@ -9,11 +9,13 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
-  isLoggedIn:boolean = true;
+  isLoggedIn:boolean = false;
   isNotLoggedIn:boolean = !this.isLoggedIn;
-  isAdmin:boolean = true;
+  isAdmin:boolean = false;
 
   ngOnInit(): void {
+    this.isLoggedIn = localStorage.getItem("isLoggedIn") == "true" ? true: false;
+    this.isAdmin = localStorage.getItem("isAdmin") == "true" ? true: false;
+    this.isNotLoggedIn = !this.isLoggedIn;
   }
-
 }

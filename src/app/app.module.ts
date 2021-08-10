@@ -1,6 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http"
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
+    FormsModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [TasksService, UsersService],

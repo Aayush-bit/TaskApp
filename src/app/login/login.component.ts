@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { UsersService } from '../services/users/users.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -8,15 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  // simpleForm: FormGroup;
-
-  // constructor(public fb: FormBuilder) {
-  //   this.simpleForm = fb.group({
-  //     simpleFormEmailEx: ['', [Validators.required, Validators.email]],
-  //     simpleFormPasswordEx: ['', Validators.required],
-  //   });
-  // }
-  
+  constructor(private _usersService: UsersService,  private router:Router) { }
+  formSubmit(formData: any) {
+    if(formData.email == "" || formData.password == "") return;
+    this._usersService.loginUser(formData)
+    .subscribe(data => {
+      localStorage.setItem("userId", data.id);
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("isAdmin", data.isAdmin);
+      localStorage.setItem("isLoggedIn", "true");
+      this.router.navigate(['/dashboard']);
+    });
+  }
   ngOnInit(): void {
   }
 }
