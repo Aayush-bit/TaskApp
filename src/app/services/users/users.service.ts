@@ -13,15 +13,14 @@ export class UsersService {
   private _url = `../../../assets/users.json`;
 
   loginUser(userData: any):Observable<any> {
-    // return 
     let reqdUser:any;
 
     return this.http.get<any>(this._url)
     .pipe(
       map(users => {
         users.filter((user:any) => {
-          if(user.email == userData.email) {
-            reqdUser = user
+          if(user.email == userData.email && user.password == userData.password) {
+            reqdUser = user;
           }
         });
         return reqdUser;
